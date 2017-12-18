@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="visible"
+            type="queueing.myapplication.SystemParams.VisibilityBinding" />
+
+        <variable
+            name="values"
+            type="queueing.myapplication.SystemParams.ValuesBinding" />
+
+
+        <import type="android.view.View" />
+
+    </data>
+
+
+    <android.support.constraint.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="15dp"
+        tools:context="DD1KQueue.myapplication.SystemParams">
+
+        <LinearLayout
+            android:id="@+id/systemParameters"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select System Type:" />
+
+            <Spinner
+                android:id="@+id/systemType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/system_types">
+
+            </Spinner>
+
+            <EditText
+                android:id="@+id/lambda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Arrival rate (Lambda)"
+                android:inputType="numberDecimal"
+                android:text="@={values.lambda}" />
+
+            <EditText
+                android:id="@+id/mue"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Service Rate (Mue)"
+                android:inputType="numberDecimal"
+
+                android:text="@={values.mue}" />
+
+
+            <EditText
+                android:id="@+id/systemCapacity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="System Capacity (K-1)"
+                android:inputType="number"
+                android:visibility="@{visible.systemCapacity?View.VISIBLE:View.GONE}" />
+
+
+            <EditText
+                android:id="@+id/initialCustomers"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:hint="Initial Customers (M)"
+                android:inputType="number"
+                android:visibility="@{visible.initialCustomers?View.VISIBLE:View.GONE}" />
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Number of servers (default is 1)"
+                android:inputType="number"
+                android:visibility="@{visible.numberOfServers?View.VISIBLE:View.GONE}" />
+
+            <Button
+                android:id="@+id/calculate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Start Calculations" />
+
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</layout>

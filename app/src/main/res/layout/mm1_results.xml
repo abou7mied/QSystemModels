@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="L"
+            type="Double" />
+
+
+        <variable
+            name="Lq"
+            type="Double" />
+
+
+        <variable
+            name="W"
+            type="Double" />
+
+
+        <variable
+            name="Wq"
+            type="Double" />
+
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <TextView
+            style="@style/mm1Result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{`Expected number of the customers in the system L: `+L}" />
+
+        <TextView
+            style="@style/mm1Result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{`Expected number of the customers in the queue Lq: `+Lq}" />
+
+        <TextView
+            style="@style/mm1Result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{`Expected waiting time in the system W: `+W}" />
+
+        <TextView
+            style="@style/mm1Result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{`Expected waiting time in the queue Wq: `+Wq}" />
+
+    </LinearLayout>
+
+</layout>

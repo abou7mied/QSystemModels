@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Queueing system</string>
+
+
+    <string name="system_prompt">Select System Type</string>
+
+    <string-array name="system_types">
+        <item>D/D/1/1-K</item>
+        <item>M/M/1</item>
+        <item>M/M/1/K</item>
+        <item>M/M/C</item>
+        <item>M/M/C/K</item>
+    </string-array>
+
+
 </resources>
