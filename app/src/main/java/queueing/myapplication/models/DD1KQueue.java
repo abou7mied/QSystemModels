@@ -18,20 +18,16 @@ public class DD1KQueue extends Queue {
     }
 
 
-    public void setK(int k) {
+    private void setK(int k) {
         this.K = k;
     }
 
-    public void setM(int m) {
+    private void setM(int m) {
         M = m;
     }
 
 
-    public int getK() {
-        return K;
-    }
-
-    public int getM() {
+    private int getM() {
         return M;
     }
 

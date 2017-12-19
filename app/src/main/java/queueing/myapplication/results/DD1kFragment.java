@@ -30,8 +30,8 @@ import queueing.myapplication.models.DD1KQueue;
 public class DD1kFragment extends Fragment {
 
 
-    public static List<Entry> entries = new ArrayList<>();
-    Dd1kResultsBinding binding;
+    private static final List<Entry> entries = new ArrayList<>();
+    private Dd1kResultsBinding binding;
 
 
     @Override
@@ -94,9 +94,6 @@ public class DD1kFragment extends Fragment {
             entries.add(new Entry(i, DD1KQueue.getNumOfCustomers(i)));
         }
     }
-
-
-
 
 
     public static class CalculationResults extends BaseObservable {

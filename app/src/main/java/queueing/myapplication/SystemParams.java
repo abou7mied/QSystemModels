@@ -6,7 +6,6 @@ import android.databinding.Bindable;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
@@ -15,18 +14,20 @@ import queueing.myapplication.databinding.ActivitySystemParamsBinding;
 import queueing.myapplication.models.DD1KQueue;
 import queueing.myapplication.models.MM1KQueue;
 import queueing.myapplication.models.MM1Queue;
+import queueing.myapplication.models.MMCKQueue;
+import queueing.myapplication.models.MMCQueue;
 import queueing.myapplication.models.Queue;
 
 public class SystemParams extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
 
-    ActivitySystemParamsBinding binding;
-    VisibilityBinding visibilityBinding = new VisibilityBinding();
-    ValuesBinding valuesBinding = new ValuesBinding();
-    int selectedSystem;
+    private ActivitySystemParamsBinding binding;
+    private final VisibilityBinding visibilityBinding = new VisibilityBinding();
+    private final ValuesBinding valuesBinding = new ValuesBinding();
+    private int selectedSystem;
 
 
-    public static Queue queue;
+    private static Queue queue;
 
 
     @Override
@@ -52,7 +53,7 @@ public class SystemParams extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    public void calculate() {
+    private void calculate() {
 
 
         if (!validInputs()) {
@@ -67,7 +68,7 @@ public class SystemParams extends AppCompatActivity implements View.OnClickListe
 
     private boolean validInputs() {
         double lambda = 0, mue = 0;
-        int systemCapacity = 0, initialCustomers = 0;
+        int systemCapacity = 0, numberOfServers = 0, initialCustomers = 0;
 
         try {
             if (isVisible(binding.lambda))
@@ -79,7 +80,11 @@ public class SystemParams extends AppCompatActivity implements View.OnClickListe
             if (isVisible(binding.systemCapacity))
                 systemCapacity = Integer.parseInt(binding.systemCapacity.getText().toString());
 
-            if (!isValid(binding.lambda, lambda) || !isValid(binding.mue, mue) || !isValid(binding.systemCapacity, systemCapacity)) {
+
+            if (isVisible(binding.numberOfServers))
+                numberOfServers = Integer.parseInt(binding.numberOfServers.getText().toString());
+
+            if (!isValid(binding.lambda, lambda) || !isValid(binding.mue, mue) || !isValid(binding.systemCapacity, systemCapacity) || !isValid(binding.numberOfServers, numberOfServers)) {
                 return false;
             }
 
@@ -106,6 +111,15 @@ public class SystemParams extends AppCompatActivity implements View.OnClickListe
                 queue = new MM1KQueue(lambda, mue, systemCapacity + 1);
                 break;
 
+            case 3:
+                queue = new MMCQueue(lambda, mue, numberOfServers);
+                break;
+
+            case 4:
+                queue = new MMCKQueue(lambda, mue, numberOfServers, systemCapacity + 1);
+                break;
+
+
         }
 
 
@@ -113,11 +127,11 @@ public class SystemParams extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    boolean isVisible(View v) {
+    private boolean isVisible(View v) {
         return v.getVisibility() == View.VISIBLE;
     }
 
-    boolean isValid(View v, double i) {
+    private boolean isValid(View v, double i) {
         return v.getVisibility() != View.VISIBLE || i > 0;
     }
 
@@ -140,6 +154,17 @@ public class SystemParams extends AppCompatActivity implements View.OnClickListe
 
             case 2:
                 visibilityBinding.setSystemCapacity(true);
+                break;
+
+
+            case 3:
+                visibilityBinding.setNumberOfServers(true);
+                break;
+
+
+            case 4:
+                visibilityBinding.setSystemCapacity(true);
+                visibilityBinding.setNumberOfServers(true);
                 break;
 
 

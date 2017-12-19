@@ -25,7 +25,7 @@ public class MM1Fragment extends Fragment {
 
     public static List<Entry> entries = new ArrayList<>();
 
-    Mm1ResultsBinding binding;
+    private Mm1ResultsBinding binding;
 
 
     @Override

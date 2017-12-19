@@ -10,28 +10,28 @@ public class Queue {
     double mue;
 
 
-    public Queue() {
+    Queue() {
     }
 
-    public Queue(double lambda, double mue) {
+    Queue(double lambda, double mue) {
         setLambda(lambda);
         setMue(mue);
     }
 
 
-    public void setLambda(double lambda) {
+    void setLambda(double lambda) {
         this.lambda = lambda;
     }
 
-    public void setMue(double mue) {
+    void setMue(double mue) {
         this.mue = mue;
     }
 
-    public double getLambda() {
+    double getLambda() {
         return lambda;
     }
 
-    public double getMue() {
+    double getMue() {
         return mue;
     }
 

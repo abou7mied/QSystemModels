@@ -14,13 +14,14 @@ import java.util.List;
 
 import queueing.myapplication.SystemParams;
 import queueing.myapplication.databinding.Mm1ResultsBinding;
-import queueing.myapplication.models.MM1KQueue;
+import queueing.myapplication.models.MMCKQueue;
+import queueing.myapplication.models.MMCQueue;
 
 /**
  * Created by abou7mied on 18/12/17.
  */
 
-public class MM1KFragment extends Fragment {
+public class MMCKFragment extends Fragment {
 
 
     public static List<Entry> entries = new ArrayList<>();
@@ -40,12 +41,11 @@ public class MM1KFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        MM1KQueue mm1Queue = (MM1KQueue) SystemParams.getQueue();
+        MMCKQueue mm1Queue = (MMCKQueue) SystemParams.getQueue();
         binding.setL(mm1Queue.getSystemCustomersCount());
         binding.setLq(mm1Queue.getQueueCustomersCount());
         binding.setW(mm1Queue.getSystemWaitingTime());
         binding.setWq(mm1Queue.getQueueWaitingTime());
-
 
 
     }

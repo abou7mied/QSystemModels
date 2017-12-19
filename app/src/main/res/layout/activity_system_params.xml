@@ -58,9 +58,16 @@
                 android:layout_height="wrap_content"
                 android:hint="Service Rate (Mue)"
                 android:inputType="numberDecimal"
-
                 android:text="@={values.mue}" />
 
+
+            <EditText
+                android:id="@+id/numberOfServers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Number of servers (C)"
+                android:inputType="number"
+                android:visibility="@{visible.numberOfServers?View.VISIBLE:View.GONE}" />
 
             <EditText
                 android:id="@+id/systemCapacity"
@@ -74,19 +81,11 @@
             <EditText
                 android:id="@+id/initialCustomers"
                 android:layout_width="match_parent"
-
                 android:layout_height="wrap_content"
                 android:hint="Initial Customers (M)"
                 android:inputType="number"
                 android:visibility="@{visible.initialCustomers?View.VISIBLE:View.GONE}" />
 
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Number of servers (default is 1)"
-                android:inputType="number"
-                android:visibility="@{visible.numberOfServers?View.VISIBLE:View.GONE}" />
 
             <Button
                 android:id="@+id/calculate"

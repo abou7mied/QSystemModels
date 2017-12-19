@@ -6,25 +6,20 @@ package queueing.myapplication.models;
 
 public class MM1KQueue extends Queue {
 
-    int K;
+    private int K;
 
     public MM1KQueue(double lambda, double mue, int K) {
-        setLambda(lambda);
-        setMue(mue);
+        super(lambda, mue);
         setK(K);
     }
 
 
-    public void setK(int k) {
+    private void setK(int k) {
         this.K = k;
     }
 
-    public int getK() {
-        return K;
-    }
 
-
-    double getRho() {
+    private double getRho() {
         return getLambda() / getMue();
     }
 
@@ -35,10 +30,8 @@ public class MM1KQueue extends Queue {
         if (rho == 1)
             return K / 2;
 
-        double result = rho * ((1 - ((K + 1) * Math.pow(rho, K)) + (K * Math.pow(rho, K + 1))) / ((1 - rho) * (1 - Math.pow(rho, K + 1))));
 
-
-        return result;
+        return rho * ((1 - ((K + 1) * Math.pow(rho, K)) + (K * Math.pow(rho, K + 1))) / ((1 - rho) * (1 - Math.pow(rho, K + 1))));
 
     }
 
@@ -48,7 +41,7 @@ public class MM1KQueue extends Queue {
     }
 
 
-    public double getPk() {
+    private double getPk() {
         return Math.pow(getRho(), K) * ((1 - getRho()) / (1 - Math.pow(getRho(), K + 1)));
     }
 
